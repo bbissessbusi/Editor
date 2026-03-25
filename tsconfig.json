@@ -4,9 +4,12 @@
     "module": "es2022",
     "target": "es6",
     "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "jsx": "react-jsx",
-    "outDir": "./build"
+    "outDir": "./build",
+    "skipLibCheck": true
   },
   "include": ["src/**/*", "remotion.config.ts"]
 }
