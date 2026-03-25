@@ -1,4 +1,6 @@
 node_modules/
-out/
 build/
 .remotion/
+# keep out/previews in git but ignore rendered videos
+out/*.mp4
+out/*.mov

@@ -11,13 +11,14 @@
   "dependencies": {
     "@remotion/cli": "4.0.440",
     "@remotion/player": "4.0.440",
-    "remotion": "4.0.440",
     "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "remotion": "4.0.440"
   },
   "devDependencies": {
     "@types/react": "18.3.1",
     "@types/react-dom": "18.3.5",
+    "puppeteer-core": "^24.40.0",
     "typescript": "5.4.5"
   }
 }
