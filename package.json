@@ -1,0 +1,23 @@
+{
+  "name": "editor",
+  "version": "0.1.0",
+  "description": "A Remotion video project",
+  "scripts": {
+    "start": "remotion studio",
+    "build": "remotion bundle",
+    "render": "remotion render",
+    "upgrade": "remotion upgrade"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.440",
+    "@remotion/player": "4.0.440",
+    "remotion": "4.0.440",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.1",
+    "@types/react-dom": "18.3.5",
+    "typescript": "5.4.5"
+  }
+}

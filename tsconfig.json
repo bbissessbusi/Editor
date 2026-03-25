@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "lib": ["ES2022", "dom"],
+    "module": "es2022",
+    "target": "es6",
+    "strict": true,
+    "moduleResolution": "node",
+    "jsx": "react-jsx",
+    "outDir": "./build"
+  },
+  "include": ["src/**/*", "remotion.config.ts"]
+}
