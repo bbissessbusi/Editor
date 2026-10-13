@@ -14,12 +14,12 @@
   --cream: #f8f3ea;
 
   /* Roles */
-  --bg: var(--cream);
-  --bg-alt: #f1eadd;
-  --card: #fffdf9;
+  --bg: #fde9dc;          /* light peach canvas */
+  --bg-alt: #f9dcc8;      /* deeper peach band */
+  --card: #fff8f3;
   --ink: #1d1529;
   --ink-soft: #5e566b;
-  --line: #e4dccd;
+  --line: #f0cfb9;
   --accent: var(--rust);
   --accent-ink: #ffffff;
 
@@ -33,21 +33,6 @@
   --max: 1180px;
   --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Helvetica Neue", Arial, sans-serif;
   --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #130e1d;
-    --bg-alt: #1a1428;
-    --card: #211932;
-    --ink: #f5efe6;
-    --ink-soft: #b2a9be;
-    --line: #2f2642;
-    --accent: var(--peach);
-    --accent-ink: #1d1529;
-    --sage-soft: #1d2a24;
-    --lav-soft: #241b38;
-    --peach-soft: #2e1e19;
-  }
 }
 
 /* Pillar themes — set on <body> */
