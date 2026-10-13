@@ -3,17 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Margin Material — Vintage Finds &amp; Custom Dresses by Lady Britt</title>
-  <meta name="description" content="Margin Material is Lady Britt's shop for hand-picked vintage and custom dresses made to order. One-of-one pieces, slow fashion, shop small.">
+  <title>Margin Material — The Drop Room | Vintage, Styling & Custom Dresses</title>
+  <meta name="description" content="Margin Material by Lady Britt: one-of-one vintage released in timed drops, personal styling and custom dressmaking. Join the list for first access.">
   <link rel="canonical" href="https://marginmaterial.com/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Margin Material by Lady Britt">
-  <meta property="og:description" content="Found in the margins. Made for the center. Hand-picked vintage and custom dresses.">
+  <meta property="og:site_name" content="Margin Material">
+  <meta property="og:title" content="Margin Material — The Drop Room | Vintage, Styling & Custom Dresses">
+  <meta property="og:description" content="Margin Material by Lady Britt: one-of-one vintage released in timed drops, personal styling and custom dressmaking. Join the list for first access.">
   <meta property="og:url" content="https://marginmaterial.com/">
   <meta property="og:image" content="https://marginmaterial.com/assets/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#fbfaf7">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23111110'/><rect x='30' y='18' width='4' height='64' fill='%239c3d2b'/><text x='58' y='68' font-family='Georgia' font-size='52' fill='%23f4f1ea' text-anchor='middle'>M</text></svg>">
+  <meta name="theme-color" content="#2a1a48">
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
@@ -23,126 +25,156 @@
     "@context": "https://schema.org",
     "@type": "ClothingStore",
     "name": "Margin Material",
-    "description": "Hand-picked vintage clothing and custom dresses made to order by Lady Britt.",
+    "description": "Vintage reselling, personal styling and custom dressmaking by Lady Britt.",
     "url": "https://marginmaterial.com/",
-    "founder": { "@type": "Person", "name": "Lady Britt" },
-    "sameAs": ["https://depop.app.link/KBBployVb7b"]
+    "logo": "https://marginmaterial.com/assets/logo.webp",
+    "foundingDate": "2026",
+    "founder": {
+      "@type": "Person",
+      "name": "Lady Britt"
+    },
+    "sameAs": [
+      "https://depop.app.link/KBBployVb7b"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Personal Styling"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "Vintage Clothing"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Custom Dressmaking"
+          }
+        }
+      ]
+    }
   }
   </script>
 </head>
-<body>
+<body class="">
   <a class="skip" href="#main">Skip to content</a>
   <header class="nav">
     <div class="wrap">
-      <a class="logo" href="/">Margin<span>|</span>Material</a>
+      <a class="brand" href="/"><img src="/assets/logo-sm.webp" alt="" width="36" height="36">Margin Material</a>
+      <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
       <nav aria-label="Main">
-        <ul>
-          <li><a href="/shop.html">Shop</a></li>
-          <li><a href="/shop.html#custom">Custom</a></li>
-          <li class="hide-sm"><a href="/about.html">About</a></li>
-          <li><a class="cta-mini" href="#list">Drop list</a></li>
+        <ul id="menu">
+          <li><a href="/" aria-current="page">Drop Room</a></li>
+          <li><a href="/styling.html">Styling</a></li>
+          <li><a href="/vintage.html">Vintage</a></li>
+          <li><a href="/custom.html">Custom</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a class="cta-mini" href="/#list">Get first access</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <!-- Hero -->
-    <section class="hero">
-      <div class="wrap stack">
-        <p class="eyebrow reveal">Margin Material · by Lady Britt</p>
-        <h1 class="display reveal">Found in the margins.<br><em>Made for the center.</em></h1>
-        <p class="lede reveal">The best pieces hide on the back rack and at the bottom of the bin. I find them, restore them and hand them to the woman who walks in and owns the room.</p>
-        <div class="btns reveal">
-          <a class="btn btn-primary" href="/shop.html">Shop the drop</a>
-          <a class="btn btn-ghost" href="/about.html">Meet Britt</a>
+    <section class="room">
+      <div class="wrap">
+        <img class="room-logo" src="/assets/logo.webp" alt="Margin Material logo: an open book stitched with needle and thread, est. 2026" width="220" height="220">
+        <p class="eyebrow">The Drop Room</p>
+        <h1 class="display" data-pre style="margin-top:14px">Something's coming.<br><em>Be in the room.</em></h1>
+        <h1 class="display" data-live hidden style="margin-top:14px">The drop is<br><em>live.</em></h1>
+        <p class="lede" style="margin-top:22px"><strong data-drop-name style="color:#fff"></strong><br><span data-drop-tagline></span></p>
+
+        <div data-pre>
+          <div class="countdown" data-countdown role="timer" aria-label="Time until the drop">
+            <div><b data-d>00</b><span>Days</span></div>
+            <div><b data-h>00</b><span>Hours</span></div>
+            <div><b data-m>00</b><span>Min</span></div>
+            <div><b data-s>00</b><span>Sec</span></div>
+          </div>
+          <p class="drop-when">Doors open <span data-drop-when></span></p>
+          <form class="signup">
+            <label class="skip" for="email-room">Email</label>
+            <input id="email-room" type="email" placeholder="you@email.com" required autocomplete="email">
+            <button class="btn btn-primary" type="submit">Get first access</button>
+          </form>
         </div>
-      </div>
-      <div class="hero-thread" aria-hidden="true"></div>
-    </section>
+        <div data-live hidden style="margin-top:34px">
+          <p><span class="live-pill">Live now</span></p>
+          <div class="btns" style="justify-content:center;margin-top:24px">
+            <a class="btn btn-primary" href="/vintage.html">Shop the drop</a>
+          </div>
+        </div>
 
-    <!-- Discovery tiles -->
-    <section style="padding-top:0">
-      <div class="wrap tiles">
-        <a class="tile wide dark reveal" href="/shop.html?c=vintage">
-          <div class="art swatch-1" style="opacity:.55"></div>
-          <div class="stack">
-            <p class="eyebrow" style="color:#e9b39f">Vintage</p>
-            <h2 class="h2">One of one.<br>Then gone.</h2>
-          </div>
-          <div class="stack">
-            <p class="muted" style="max-width:460px">Every vintage piece is hand-picked, inspected seam by seam and photographed on a real body. When it sells, it's gone for good.</p>
-            <span class="link-arrow">Shop vintage</span>
-          </div>
-        </a>
-
-        <a class="tile reveal" href="/shop.html#custom">
-          <div class="art swatch-3"></div>
-          <div class="stack on-art">
-            <p class="eyebrow" style="color:#ffd9cf">Custom</p>
-            <h2 class="h2">Made for you. Only you.</h2>
-          </div>
-          <span class="link-arrow on-art" style="color:#fff">Start a custom piece</span>
-        </a>
-
-        <a class="tile reveal" data-depop href="#" target="_blank" rel="noopener">
-          <div class="stack">
-            <p class="eyebrow">Also on Depop</p>
-            <h2 class="h2">Shop the rack where you already scroll.</h2>
-          </div>
-          <div class="stack">
-            <p class="muted">Follow the Depop shop for quick-sell finds and bundle deals.</p>
-            <span class="link-arrow">Open Depop shop</span>
-          </div>
-        </a>
+        <div class="teasers" data-teasers aria-label="A blurred preview of the next drop"></div>
       </div>
     </section>
 
-    <!-- Promise strip -->
-    <section class="section-alt">
-      <div class="wrap strip">
-        <div class="reveal"><div class="num">1/1</div><p class="muted">Every piece is the only one</p></div>
-        <div class="reveal"><div class="num">By hand</div><p class="muted">Every custom seam</p></div>
-        <div class="reveal"><div class="num">First</div><p class="muted">The drop list sees it before anyone</p></div>
-      </div>
-    </section>
-
-    <!-- Process -->
     <section>
       <div class="wrap stack">
-        <p class="eyebrow reveal">From the bin to your closet</p>
-        <h2 class="h2 reveal">What happens before it drops.</h2>
-        <div class="steps" style="margin-top:48px">
-          <div class="step reveal"><h3 class="h3">The hunt</h3><p class="muted">Estate sales and the rack everybody walks past.</p></div>
-          <div class="step reveal"><h3 class="h3">The inspection</h3><p class="muted">Seams. Fabric weight. Hardware. That's how you know it's worth it.</p></div>
-          <div class="step reveal"><h3 class="h3">The restore</h3><p class="muted">Cleaned and mended until it looks like it was waiting for you.</p></div>
-          <div class="step reveal"><h3 class="h3">The drop</h3><p class="muted">The list hears first. Then it's live. I ain't gon' beg you now.</p></div>
+        <p class="eyebrow reveal">Three ways in</p>
+        <h2 class="h2 reveal">Styled. Found. Made.</h2>
+        <div class="pillars" style="margin-top:44px">
+          <a class="pillar p-styling reveal" href="/styling.html">
+            <div class="stack"><svg class="icon" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="28" cy="22" rx="12" ry="15"/><path d="M28 37v10M20 49h16"/><path d="M22 16c2-3 5-4 8-3"/></svg><p class="num">01 · PERSONAL STYLING</p><h3 class="h2" style="font-size:clamp(30px,3.4vw,42px)">Dress like you already arrived.</h3></div>
+            <div class="stack"><p>Closet edits, shopping sessions and event looks built around your real life.</p><span class="link-arrow">Book styling</span></div>
+          </a>
+          <a class="pillar p-vintage reveal" href="/vintage.html">
+            <div class="stack"><svg class="icon" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M28 18a4 4 0 1 1 4-4c0 2-1.5 3-4 4.5"/><path d="M28 18.5 6 36c-1.5 1.2-.7 3.5 1.2 3.5h41.6c1.9 0 2.7-2.3 1.2-3.5L28 18.5z"/></svg><p class="num">02 · VINTAGE RESELLING</p><h3 class="h2" style="font-size:clamp(30px,3.4vw,42px)">One of one. Then gone.</h3></div>
+            <div class="stack"><p>Hand-picked pieces, inspected seam by seam and released in drops.</p><span class="link-arrow">Shop vintage</span></div>
+          </a>
+          <a class="pillar p-custom reveal" href="/custom.html">
+            <div class="stack"><svg class="icon" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M40 6 16 50"/><ellipse cx="38.5" cy="10" rx="1.6" ry="3.5" transform="rotate(29 38.5 10)"/><path d="M38 12c-14 2-24 10-18 18s18-2 10 12"/></svg><p class="num">03 · CUSTOM DRESSMAKING</p><h3 class="h2" style="font-size:clamp(30px,3.4vw,42px)">Made for you. Only you.</h3></div>
+            <div class="stack"><p>From sketch to final fitting, a dress built to your measurements.</p><span class="link-arrow">Start a custom piece</span></div>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- Margin note -->
     <section class="section-alt">
-      <div class="wrap two-col">
-        <div class="stack reveal">
-          <p class="eyebrow">Why "Margin Material"</p>
-          <h2 class="h2">The good stuff lives at the edges.</h2>
-          <p class="lede">Writers keep their sharpest thoughts in the margins. Seamstresses keep the best fabric there too. This shop is built from what everyone else overlooked.</p>
-          <a class="link-arrow" href="/about.html">Read Britt's story</a>
+      <div class="wrap stack">
+        <p class="eyebrow reveal">How the Drop Room works</p>
+        <h2 class="h2 reveal">Miss the drop, miss the piece.</h2>
+        <div class="steps" style="margin-top:48px">
+          <div class="step reveal"><h3 class="h3">Join the list</h3><p class="muted">One email when the doors are about to open.</p></div>
+          <div class="step reveal"><h3 class="h3">Watch the clock</h3><p class="muted">The countdown runs here. The pieces stay blurred until it hits zero.</p></div>
+          <div class="step reveal"><h3 class="h3">Doors open</h3><p class="muted">Every piece unlocks at once. The list hears first.</p></div>
+          <div class="step reveal"><h3 class="h3">First come, first dressed</h3><p class="muted">Each piece is the only one. I ain't gon' beg you now.</p></div>
         </div>
-        <p class="margin-note reveal">Slow fashion asks one question: will you still love this in ten years? Every piece here has to answer yes.</p>
       </div>
     </section>
 
-    <!-- Drop list -->
+    <section>
+      <div class="wrap two-col">
+        <img class="reveal" src="/assets/logo.webp" alt="" width="720" height="720" style="max-width:440px;width:100%;margin:0 auto" loading="lazy">
+        <div class="stack reveal">
+          <p class="eyebrow">Read the patch</p>
+          <h2 class="h2">Every stitch means something.</h2>
+          <p><strong>The open book.</strong> <span class="muted">The sharpest notes live in the margins. So do the best pieces.</span></p>
+          <p><strong>The needle and thread.</strong> <span class="muted">Every custom dress starts with one stitch.</span></p>
+          <p><strong>The scissors and the tee.</strong> <span class="muted">Vintage, restored and remade for right now.</span></p>
+          <a class="link-arrow" href="/about.html">Meet Lady Britt</a>
+        </div>
+      </div>
+    </section>
+
     <section id="list" class="center">
       <div class="wrap stack">
         <p class="eyebrow reveal">Get first access</p>
-        <h2 class="h2 reveal">The next drop goes to the list first.</h2>
-        <p class="lede reveal">One email when something special lands. Stay close, Family.</p>
+        <h2 class="h2 reveal">The list hears first.</h2>
+        <p class="lede reveal">One email before every drop. Stay close, Family.</p>
         <form class="signup reveal">
           <label class="skip" for="email-home">Email</label>
-          <input id="email-home" type="email" placeholder="you@email.com" required>
+          <input id="email-home" type="email" placeholder="you@email.com" required autocomplete="email">
           <button class="btn btn-primary" type="submit">Join the list</button>
         </form>
       </div>
@@ -151,19 +183,24 @@
 
   <footer>
     <div class="wrap">
-      <span>© <span data-year></span> Margin Material by Lady Britt</span>
+      <a class="brand" href="/"><img src="/assets/logo-sm.webp" alt="" width="36" height="36">Margin Material</a>
       <ul>
-        <li><a href="/shop.html">Shop</a></li>
+        <li><a href="/styling.html">Styling</a></li>
+        <li><a href="/vintage.html">Vintage</a></li>
+        <li><a href="/custom.html">Custom</a></li>
         <li><a href="/about.html">About</a></li>
-        <li><a data-depop href="#" target="_blank" rel="noopener">Depop</a></li>
-        <li><a data-social="instagram" href="#" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a data-social="tiktok" href="#" target="_blank" rel="noopener">TikTok</a></li>
-        <li><a data-social="pinterest" href="#" target="_blank" rel="noopener">Pinterest</a></li>
-        <li><a data-social="substack" href="#" target="_blank" rel="noopener">Substack</a></li>
+        <li><a data-link="depop" href="#" target="_blank" rel="noopener">Depop</a></li>
+        <li><a data-link="instagram" href="#" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a data-link="tiktok" href="#" target="_blank" rel="noopener">TikTok</a></li>
+        <li><a data-link="pinterest" href="#" target="_blank" rel="noopener">Pinterest</a></li>
+        <li><a data-link="threads" href="#" target="_blank" rel="noopener">Threads</a></li>
+        <li><a data-link="substack" href="#" target="_blank" rel="noopener">Substack</a></li>
       </ul>
+      <span>© <span data-year></span> Margin Material · Est. 2026</span>
     </div>
   </footer>
 
+  <script src="/assets/config.js"></script>
   <script src="/assets/products.js"></script>
   <script src="/assets/main.js"></script>
 </body>

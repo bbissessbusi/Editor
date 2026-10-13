@@ -1,33 +1,40 @@
-# Margin Material: website
+# Margin Material: The Drop Room
 
 This is a static site with no build step, so Cloudflare Pages can host it for free.
 
 ```
 site/
-├── index.html        Home: hero, discovery tiles, process, drop list
-├── shop.html         Shop: filterable grid, Depop banner, custom order form
-├── about.html        Bio page for Lady Britt
-├── 404.html
-├── robots.txt / sitemap.xml
+├── index.html      The Drop Room: countdown, blurred preview, three pillars, drop list
+├── styling.html    Pillar 01: Personal Styling (services + booking form)
+├── vintage.html    Pillar 02: Vintage Reselling (shop, drop lock, Depop)
+├── custom.html     Pillar 03: Custom Dressmaking (options + request form)
+├── about.html      Bio for Lady Britt
+├── 404.html, robots.txt, sitemap.xml, _redirects
 └── assets/
+    ├── config.js     ← drop date, drop name, email, social links
+    ├── products.js   ← your vintage pieces
+    ├── logo.webp     ← your patch logo (plus favicon and app icon)
     ├── styles.css
-    ├── main.js       ← your email + social links (SITE block at the top)
-    └── products.js   ← your pieces (the only file you touch for new drops)
+    └── main.js
 ```
 
-## Updating the shop
+Brand colors are set at the top of `assets/styles.css`: forest and sage green for Styling, rust and peach for Vintage, and plum and lavender for Custom and the Drop Room.
 
-1. Put photos in `site/assets/` (for example `site/assets/sunday-midi.jpg`, ideally 1200×1500 px).
-2. In `assets/products.js`, copy one item block and fill in the name, price and photo.
-3. For each piece, set **one or both** of these:
-   - `buyUrl`: the Shopify product link. People can check out on your site's "Buy now" button.
-   - `depopUrl`: the listing link on Depop. If you leave it blank, the button opens your Depop shop.
-4. Set `status: "sold"` when a piece sells. It stays on the page as social proof.
+## Running a drop
 
-Before going live:
-- Replace `hello@marginmaterial.com` in `assets/main.js` with your real email, and add your Substack, Instagram, TikTok, Pinterest and Threads links.
-- If your domain is not `marginmaterial.com`, find and replace it in the four `.html` files, `robots.txt` and `sitemap.xml`.
-- Add a 1200×630 share image at `assets/og.jpg`. Link previews in iMessage and Instagram DMs use it.
+1. In `assets/config.js`, set `dropDate`, `dropName` and `dropTagline`. The countdown on the home page and the Vintage page follows that date.
+2. In `assets/products.js`, add the pieces with `status: "drop"`. Until the countdown hits zero they appear blurred, with the name and price hidden. At zero they unlock automatically with a "New" badge, and the home page switches to "The drop is live."
+3. Put photos in `site/assets/` (ideally 1200×1500 px) and set each piece's `image`.
+4. Give each piece a `buyUrl` (Shopify product link), a `depopUrl` (Depop listing), or both.
+5. When a piece sells, change it to `status: "sold"`. It stays up as proof.
+6. After the drop, change the remaining pieces to `"available"` and set the next `dropDate`.
+
+## Before going live
+
+- In `assets/config.js`, add your real email and your Substack, Instagram, TikTok, Pinterest and Threads links. Add a Calendly or Acuity link as `bookingUrl` if you want styling clients to book directly.
+- If your domain is not `marginmaterial.com`, find and replace it in the `.html` files, `robots.txt` and `sitemap.xml`.
+- Add a 1200×630 share image at `assets/og.jpg`. It's what shows when someone shares your link in a text or DM.
+- Replace the bio placeholder portrait in `about.html` with your photo.
 
 ## Connecting your domain with Cloudflare
 
