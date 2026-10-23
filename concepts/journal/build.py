@@ -1,14 +1,14 @@
-"""Builds the Margin Journal concept pages. Run: python3 build.py (writes next to this file)."""
+"""Builds the Margin Journal pages. Run: python3 build.py (writes next to this file).
+Chapter order: I Found (vintage via Depop) → II Styled (Styled By) → III Made (custom). Contents sits last on the home page."""
 import os
 
 OUT = os.path.dirname(os.path.abspath(__file__))
 FONTS = "https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap"
 
 NAV = [
-    ("index.html", "Contents", ""),
-    ("styling.html", "Styled", "I"),
-    ("vintage.html", "Found", "II"),
-    ("custom.html", "Made", "III"),
+    ("found.html", "Found", "I"),
+    ("styled.html", "Styled", "II"),
+    ("made.html", "Made", "III"),
     ("about.html", "About", ""),
 ]
 
@@ -18,8 +18,7 @@ def page(file, title, desc, chapter, body):
     for href, label, num in NAV:
         cur = ' aria-current="page"' if href == file else ""
         n = f'<span class="num">{num}</span>' if num else ""
-        cls = ' class="hide-md"' if href == "about.html" else ""
-        links.append(f'<li{cls}><a href="{href}"{cur}>{n}{label}</a></li>')
+        links.append(f'<li><a href="{href}"{cur}>{n}{label}</a></li>')
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -48,9 +47,9 @@ def page(file, title, desc, chapter, body):
   <div class="wrap">
     <span class="hand">Margin Material · est. 2026</span>
     <ul>
-      <li><a href="styling.html">Personal Styling</a></li>
-      <li><a href="vintage.html">Vintage</a></li>
-      <li><a href="custom.html">Custom Dresses</a></li>
+      <li><a href="found.html">Vintage</a></li>
+      <li><a href="styled.html">Virtual Styling</a></li>
+      <li><a href="made.html">Custom Pieces</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="https://depop.app.link/KBBployVb7b" target="_blank" rel="noopener">Depop</a></li>
     </ul>
@@ -63,186 +62,137 @@ def page(file, title, desc, chapter, body):
 """
 
 
+DEPOP_NOTE = '<span class="depop-note"><span class="depop-dot"></span>Checkout happens securely on Depop</span>'
+
 SUBSCRIBE = """
 <section class="band">
   <div class="wrap spread">
     <div class="main stack">
       <p class="kicker">The Journal</p>
       <h2 class="h2">Get the next entry in your inbox.</h2>
-      <p class="lede muted">New finds, styling notes and the stories behind each dress. Only when it's worth reading.</p>
+      <p class="lede muted">New finds, styling notes and the stories behind each piece. Only when it's worth reading.</p>
       <form class="subscribe" data-form="subscribe">
         <label class="sr" for="sub-email">Email</label>
         <input id="sub-email" type="email" placeholder="you@email.com" required>
         <button class="btn ink" type="submit">Subscribe</button>
       </form>
     </div>
-    <aside class="margin">
-      <p class="note lav">Stay close, Family.</p>
-    </aside>
+    <aside class="margin"><p class="note lav">Stay close, Family.</p></aside>
   </div>
 </section>"""
 
-HOME = """
-<section class="hero">
-  <div class="wrap spread">
-    <div class="main stack">
-      <p class="kicker">The Margin Journal · <b>Vol. 1</b></p>
-      <h1 class="h1">Style lives in <em>the</em> <mark>margins.</mark></h1>
-      <p class="lede">Margin Material is Lady Britt's studio for three crafts. Styling the closet you already own. Finding the vintage you've been missing. Making the dress that only exists because you asked.</p>
-      <div class="btns">
-        <a class="btn solid" href="vintage.html">Shop the rack</a>
-        <a class="btn" href="#contents">Read the contents</a>
-      </div>
-    </div>
-    <aside class="margin">
-      <img class="patch" src="assets/logo.webp" alt="Margin Material patch: an open book, a needle and thread, scissors and a tee" width="150" height="150">
-      <p class="note rust write" style="--d:.5s"><span class="arrow">↖</span> stitched by hand,<br>like everything here</p>
-      <p class="note sage write" style="--d:.9s">read in any order</p>
-    </aside>
-  </div>
-</section>
-
-<section id="contents" style="padding-top:0">
+CONTENTS = """
+<section id="contents">
   <div class="wrap stack" style="gap:28px">
     <p class="kicker">Contents</p>
     <ol class="toc">
-      <li class="ch-styled"><a href="styling.html">
+      <li class="ch-found"><a href="found.html">
         <span class="numeral">I</span>
-        <span class="title">Styled<small>Personal Styling</small></span>
-        <span class="blurb">Outfits built around your real life, from the closet you already own.</span>
-      </a></li>
-      <li class="ch-found"><a href="vintage.html">
-        <span class="numeral">II</span>
-        <span class="title">Found<small>Vintage Reselling</small></span>
+        <span class="title">Found<small>Vintage · Shop on Depop</small></span>
         <span class="blurb">One-of-one pieces, inspected seam by seam and restored before they reach you.</span>
       </a></li>
-      <li class="ch-made"><a href="custom.html">
+      <li class="ch-styled"><a href="styled.html">
+        <span class="numeral">II</span>
+        <span class="title">Styled<small>Virtual Styling · Styled By certified</small></span>
+        <span class="blurb">Book a virtual session, pay upfront and get styled from anywhere.</span>
+      </a></li>
+      <li class="ch-made"><a href="made.html">
         <span class="numeral">III</span>
-        <span class="title">Made<small>Custom Dressmaking</small></span>
-        <span class="blurb">A dress drawn, cut and sewn for one person. You.</span>
+        <span class="title">Made<small>Custom Pieces</small></span>
+        <span class="blurb">A piece drawn, cut and sewn for one person. You.</span>
+      </a></li>
+      <li class="ch-found"><a href="about.html">
+        <span class="numeral" style="font-size:40px">✦</span>
+        <span class="title">About<small>Lady Britt</small></span>
+        <span class="blurb">The stylist, vintage hunter and dressmaker behind the patch.</span>
       </a></li>
     </ol>
   </div>
-</section>
+</section>"""
 
-<section class="band ch-found">
-  <div class="wrap stack" style="gap:40px">
-    <div class="spread">
-      <div class="main stack">
-        <p class="kicker">Chapter II · <b>Fresh in the margins</b></p>
-        <h2 class="h2">This week's finds.</h2>
-      </div>
-      <aside class="margin"><p class="note rust">one of each,<br>then gone</p></aside>
-    </div>
-    <div class="pieces" data-pieces="3"></div>
-    <a class="more" href="vintage.html" style="align-self:flex-start">See the whole rack</a>
-  </div>
-</section>
+HOW_STYLED = """
+<ol class="steps five">
+  <li><b>Choose a session</b><span>Closet edit, shopping session or event styling.</span></li>
+  <li><b>Pick a time</b><span>Open slots show live on the calendar below.</span></li>
+  <li><b>Pay upfront</b><span>Your payment holds the spot. No invoices later.</span></li>
+  <li><b>Style questionnaire</b><span>Sizes, photos and goals, sent right after booking.</span></li>
+  <li><b>Get styled</b><span>We meet on video and you leave with every look saved.</span></li>
+</ol>"""
 
-<section>
-  <div class="wrap spread">
-    <div class="main">
-      <div class="letter">
-        <p class="kicker">A note from Britt</p>
-        <p>Hey ya. So, let me say this. The pieces I love most were sitting where nobody looked. The back rack. The bottom of the bin. The margins.</p>
-        <p>That's where this whole thing lives. I find what others walked past, I style it for the life you actually live, and when the perfect piece doesn't exist, I make it.</p>
-        <p class="sig">— Britt</p>
-      </div>
+HOME = f"""
+<section class="opener ch-found" style="padding-block:72px 64px">
+  <span class="big-num" aria-hidden="true">I</span>
+  <div class="wrap spread" style="gap:0 56px">
+    <div class="main stack">
+      <p class="kicker">Margin Material · Chapter I · Found</p>
+      <h1 class="h1">Found. <em>Then gone.</em></h1>
+      <p class="lede">Hand-picked vintage from the back rack and the bottom of the bin. Every piece is one of one, and every piece checks out on Depop.</p>
+      <div class="btns"><a class="btn solid" href="found.html">Shop the rack</a><a class="btn" data-depop-shop href="#" target="_blank" rel="noopener">Open Depop shop</a></div>
     </div>
-    <aside class="margin">
-      <p class="note lav">P.S. custom spots<br>are limited each month</p>
-      <a class="more" href="about.html">Read her story</a>
+    <aside class="margin" style="align-items:center">
+      <img class="patch" src="assets/logo.webp" alt="Margin Material patch: an open book, a needle and thread, scissors and a tee" width="150" height="150">
     </aside>
   </div>
 </section>
-""" + SUBSCRIBE
 
-STYLING = """
+<section class="ch-found">
+  <div class="wrap stack" style="gap:36px">
+    <div class="spread">
+      <div class="main stack">
+        <p class="kicker">On the rack now</p>
+        <h2 class="h2">This week's finds.</h2>
+        {DEPOP_NOTE}
+      </div>
+      <aside class="margin"><p class="note rust">tap a piece to<br>buy it on Depop</p></aside>
+    </div>
+    <div class="pieces" data-pieces="6"></div>
+    <a class="more" href="found.html" style="align-self:flex-start">See the whole rack</a>
+  </div>
+</section>
+
+<section class="band ch-styled">
+  <div class="wrap stack" style="gap:36px">
+    <div class="spread">
+      <div class="main stack">
+        <p class="kicker">Chapter II · <b>Styled</b></p>
+        <h2 class="h2">Get styled from anywhere.</h2>
+        <p class="lede muted">Certified through Styled By. Book a virtual session, pay upfront and meet me on video.</p>
+      </div>
+      <aside class="margin" style="align-items:flex-start">
+        <div class="score placeholder" style="width:130px;height:130px"><div><b style="font-size:44px">—</b><br><span>Styled By score</span></div></div>
+      </aside>
+    </div>
+    <div class="services" data-services></div>
+    <a class="more" href="styled.html" style="align-self:flex-start">See the portfolio and book</a>
+  </div>
+</section>
+
+<section class="ch-made">
+  <div class="wrap stack" style="gap:36px">
+    <div class="spread">
+      <div class="main stack">
+        <p class="kicker">Chapter III · <b>Made</b></p>
+        <h2 class="h2">Sewn by hand, for one.</h2>
+        <p class="lede muted">A few pieces from the sewing table. Yours could be next.</p>
+      </div>
+      <aside class="margin"><p class="note lav">every piece starts<br>with a consult</p></aside>
+    </div>
+    <div class="sewn" data-sewn="3"></div>
+    <div class="btns"><a class="btn solid" href="made.html#commission">Commission a piece</a><a class="btn" href="made.html">See everything I've made</a></div>
+  </div>
+</section>
+{SUBSCRIBE}
+{CONTENTS}
+"""
+
+FOUND = f"""
 <section class="opener">
   <span class="big-num" aria-hidden="true">I</span>
   <div class="wrap">
-    <p class="kicker">Chapter I · Personal Styling</p>
-    <h1 class="h1">Styled. <em>On purpose.</em></h1>
-    <p class="lede">Your closet already holds more outfits than you've worn. I help you find them, fill the gaps with intention and walk out the door certain.</p>
-    <div class="btns"><a class="btn solid" href="#book">Book a free consult</a><a class="btn" href="#sessions">See the sessions</a></div>
-  </div>
-</section>
-
-<section id="sessions">
-  <div class="wrap stack" style="gap:34px">
-    <div class="spread">
-      <div class="main stack">
-        <p class="kicker">Sessions</p>
-        <h2 class="h2">Pick your starting page.</h2>
-      </div>
-      <aside class="margin"><p class="note">virtual or<br>in person</p></aside>
-    </div>
-    <div class="entries">
-      <div class="entry">
-        <div><h3 class="h3">The Closet Edit</h3><p class="muted">We go through what you own together and find the outfits already hiding in there.</p>
-          <ul><li>Keep, tailor or donate decisions</li><li>Outfit formulas you can repeat</li><li>A short list of pieces worth adding</li></ul></div>
-        <p class="note">start here if your<br>closet feels full but<br>you have nothing to wear</p>
-      </div>
-      <div class="entry">
-        <div><h3 class="h3">The Shopping Session</h3><p class="muted">I pull pieces for your brief, vintage included. You try on, I style, you keep what you love.</p>
-          <ul><li>Style brief and size profile</li><li>Private pull from the vintage rack</li><li>Try-on with styling notes</li></ul></div>
-        <p class="note">first look at<br>vintage before<br>it hits the shop</p>
-      </div>
-      <div class="entry">
-        <div><h3 class="h3">Event Styling</h3><p class="muted">Weddings, galas, Sunday service or a photoshoot. Walk in finished.</p>
-          <ul><li>A look planned around the occasion</li><li>Vintage, custom or both</li><li>Accessories and final fitting</li></ul></div>
-        <p class="note">pairs well with<br>Chapter III <a href="custom.html" class="arrow" style="text-decoration:none">→</a></p>
-      </div>
-    </div>
-    <p class="muted">Pricing is shared at your free consult, based on the session you choose.</p>
-  </div>
-</section>
-
-<section class="band">
-  <div class="wrap stack" style="gap:36px">
-    <p class="kicker">How a session runs</p>
-    <ol class="steps">
-      <li><b>Consult</b><span>We talk about your life, your goals and your budget.</span></li>
-      <li><b>Mood board</b><span>You approve the direction before anything gets bought.</span></li>
-      <li><b>The pull</b><span>I gather pieces from your closet and my racks.</span></li>
-      <li><b>Styling day</b><span>We put it together and you leave with photos of every look.</span></li>
-    </ol>
-  </div>
-</section>
-
-<section id="book">
-  <div class="wrap spread">
-    <div class="main stack">
-      <p class="kicker">Book</p>
-      <h2 class="h2">Start with a free consult.</h2>
-      <form class="req" data-form="book">
-        <div class="two">
-          <label for="s-name">Name<input id="s-name" name="name" required autocomplete="name"></label>
-          <label for="s-email">Email<input id="s-email" name="email" type="email" required autocomplete="email"></label>
-        </div>
-        <div class="two">
-          <label for="s-service">Session<select id="s-service" name="service"><option>The Closet Edit</option><option>The Shopping Session</option><option>Event Styling</option><option>Not sure yet</option></select></label>
-          <label for="s-format">Format<select id="s-format" name="format"><option>Virtual</option><option>In person</option></select></label>
-        </div>
-        <label for="s-what">What are you dressing for?<textarea id="s-what" name="what" rows="4" placeholder="A new job, a wedding, a fresh start…"></textarea></label>
-        <button class="btn solid" type="submit">Request a consult</button>
-      </form>
-    </div>
-    <aside class="margin">
-      <p class="note">bring the one piece<br>you'd never give up</p>
-    </aside>
-  </div>
-</section>
-"""
-
-VINTAGE = """
-<section class="opener">
-  <span class="big-num" aria-hidden="true">II</span>
-  <div class="wrap">
-    <p class="kicker">Chapter II · Vintage Reselling</p>
+    <p class="kicker">Chapter I · Found</p>
     <h1 class="h1">Found. <em>Then gone.</em></h1>
-    <p class="lede">Hand-picked from the back rack and the bottom of the bin, restored and released one piece at a time. When it sells, it's gone for good.</p>
-    <div class="btns"><a class="btn solid" href="#rack">Shop the rack</a><a class="btn" href="https://depop.app.link/KBBployVb7b" target="_blank" rel="noopener">Open Depop shop</a></div>
+    <p class="lede">Hand-picked, restored and listed one piece at a time. Browse here, then tap any piece to buy it on Depop.</p>
+    <div class="btns"><a class="btn solid" href="#rack">Shop the rack</a><a class="btn" data-depop-shop href="#" target="_blank" rel="noopener">Follow on Depop</a></div>
   </div>
 </section>
 
@@ -252,7 +202,8 @@ VINTAGE = """
       <div class="main stack">
         <p class="kicker">The rack</p>
         <h2 class="h2">Every piece is the only one.</h2>
-        <div class="filters" role="group" aria-label="Filter the rack">
+        {DEPOP_NOTE}
+        <div class="filters" role="group" aria-label="Filter the rack" style="margin-top:12px">
           <button class="chip" data-filter="all" aria-pressed="true">All</button>
           <button class="chip" data-filter="dresses" aria-pressed="false">Dresses</button>
           <button class="chip" data-filter="tops" aria-pressed="false">Tops</button>
@@ -260,105 +211,204 @@ VINTAGE = """
           <button class="chip" data-filter="accessories" aria-pressed="false">Accessories</button>
         </div>
       </div>
-      <aside class="margin">
-        <p class="note"><small>How I grade a piece</small>Seams. Fabric weight. Hardware.</p>
-      </aside>
+      <aside class="margin"><p class="note"><small>How I grade a piece</small>Seams. Fabric weight. Hardware.</p></aside>
     </div>
     <div class="pieces" data-pieces></div>
   </div>
 </section>
 
-<section style="padding-top:0">
-  <div class="wrap">
-    <div class="depop">
-      <div class="stack" style="gap:10px">
-        <p class="kicker" style="color:#f5b48d">Also on Depop</p>
-        <h2 class="h2">More finds between entries.</h2>
-        <p class="muted">Quick-sell pieces and bundles live on Depop. Follow the shop so new listings land in your feed.</p>
-      </div>
-      <a class="btn depop" href="https://depop.app.link/KBBployVb7b" target="_blank" rel="noopener">Shop on Depop</a>
-    </div>
-  </div>
-</section>
-
 <section class="band">
   <div class="wrap stack" style="gap:36px">
-    <p class="kicker">From the bin to your closet</p>
+    <p class="kicker">How buying works</p>
     <ol class="steps">
-      <li><b>The hunt</b><span>Estate sales and the rack everybody walks past.</span></li>
-      <li><b>The inspection</b><span>Seams. Fabric weight. Hardware. That's how you know.</span></li>
-      <li><b>The restore</b><span>Cleaned and mended until it looks like it was waiting for you.</span></li>
-      <li><b>The listing</b><span>Photographed, measured and posted here and on Depop.</span></li>
+      <li><b>Browse here</b><span>Every piece on the rack is live on Depop too.</span></li>
+      <li><b>Tap "Buy on Depop"</b><span>You land on that exact listing.</span></li>
+      <li><b>Check out on Depop</b><span>Payment and buyer protection run through Depop.</span></li>
+      <li><b>It ships to you</b><span>Packed with care, tracking included.</span></li>
     </ol>
   </div>
 </section>
 """
 
-CUSTOM = """
+STYLED = f"""
 <section class="opener">
-  <span class="big-num" aria-hidden="true">III</span>
+  <span class="big-num" aria-hidden="true">II</span>
   <div class="wrap">
-    <p class="kicker">Chapter III · Custom Dressmaking</p>
-    <h1 class="h1">Made. <em>For one.</em></h1>
-    <p class="lede">Tell me the occasion and the feeling. I'll sketch it, source the fabric and build it to your measurements.</p>
-    <div class="btns"><a class="btn solid" href="#commission">Start a commission</a><a class="btn" href="#process">See the process</a></div>
+    <p class="kicker">Chapter II · Styled</p>
+    <h1 class="h1">Styled. <em>From anywhere.</em></h1>
+    <p class="lede">Certified virtual styling through Styled By. Pick your session, pay upfront and meet me on video.</p>
+    <div class="btns"><a class="btn solid" href="#book">Book a virtual session</a><a class="btn" href="#portfolio">See the portfolio</a></div>
   </div>
 </section>
 
-<section id="process">
+<section>
+  <div class="wrap stack" style="gap:44px">
+    <div class="profile">
+      <div class="avatar sw4 placeholder"><span class="ph-label" style="color:#f1f6ee">your Styled By<br>profile photo</span></div>
+      <div class="stack" style="gap:6px">
+        <p class="kicker">Styled By profile</p>
+        <h2>Lady Britt</h2>
+        <p class="muted">Virtual stylist · Vintage specialist · Custom dressmaker</p>
+        <div class="badges"><span class="badge ch">Styled By Certified Stylist</span><span class="badge">Virtual sessions</span><span class="badge">Vintage sourcing</span></div>
+        <a class="more" href="#" style="align-self:flex-start;margin-top:8px">View my Styled By profile</a>
+      </div>
+      <div class="score placeholder"><div><b>—</b><br><span>Styled By score</span></div></div>
+    </div>
+
+    <div class="cert">
+      <div class="frame"><div class="placeholder"><span class="ph-label">your Styled By<br>certificate goes here</span></div></div>
+      <div class="stack">
+        <p class="kicker">Certification</p>
+        <h2 class="h2">Certified. And it shows.</h2>
+        <p class="lede muted">My Styled By certification and score, right here for you to see before you book.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio" class="band">
   <div class="wrap stack" style="gap:36px">
     <div class="spread">
-      <div class="main stack">
-        <p class="kicker">The process</p>
-        <h2 class="h2">From first sketch to final fitting.</h2>
-      </div>
-      <aside class="margin"><p class="note">custom takes time.<br>it's worth the wait.</p></aside>
+      <div class="main stack"><p class="kicker">Portfolio</p><h2 class="h2">Looks I've styled.</h2></div>
+      <aside class="margin"><p class="note">real clients,<br>real closets</p></aside>
     </div>
+    <div class="portfolio">
+      <div class="look"><div class="img sw4"></div><b>Sunday, elevated</b><span>Event styling</span></div>
+      <div class="look"><div class="img sw6"></div><b>The work-week five</b><span>Closet edit</span></div>
+      <div class="look"><div class="img sw3"></div><b>Gala in lavender</b><span>Event styling</span></div>
+      <div class="look"><div class="img sw2"></div><b>Weekend vintage</b><span>Shopping session</span></div>
+      <div class="look"><div class="img sw1"></div><b>Rust and gold</b><span>Shopping session</span></div>
+      <div class="look"><div class="img sw5"></div><b>Linen layers</b><span>Closet edit</span></div>
+      <div class="look"><div class="img sw4"></div><b>First-date fit</b><span>Event styling</span></div>
+      <div class="look"><div class="img sw6"></div><b>Peach for spring</b><span>Closet edit</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap stack" style="gap:36px">
+    <div class="spread">
+      <div class="main stack"><p class="kicker">Services</p><h2 class="h2">Pick your session.</h2></div>
+      <aside class="margin"><p class="note">same sessions as<br>my Styled By profile</p></aside>
+    </div>
+    <div class="services" data-services></div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap stack" style="gap:36px">
+    <div class="spread">
+      <div class="main stack"><p class="kicker">How this works</p><h2 class="h2">Book, pay, get styled.</h2></div>
+      <aside class="margin"><p class="note">your spot is held<br>once you pay</p></aside>
+    </div>
+    {HOW_STYLED}
+  </div>
+</section>
+
+<section id="book">
+  <div class="wrap stack" style="gap:28px">
+    <div class="spread">
+      <div class="main stack"><p class="kicker">Book</p><h2 class="h2">Book your virtual session.</h2></div>
+      <aside class="margin"><p class="note">times show in<br>your time zone</p></aside>
+    </div>
+    <div class="booker" data-booker>
+      <ol class="booker-steps" data-steps></ol>
+      <div data-panel></div>
+      <div class="booker-nav"><button class="btn" type="button" data-back>Back</button><button class="btn solid" type="button" data-next-step>Next</button></div>
+    </div>
+  </div>
+</section>
+"""
+
+MADE = """
+<section class="opener">
+  <span class="big-num" aria-hidden="true">III</span>
+  <div class="wrap">
+    <p class="kicker">Chapter III · Made</p>
+    <h1 class="h1">Made. <em>For one.</em></h1>
+    <p class="lede">Every piece below was drawn, cut and sewn by hand. Tell me what you want made and book your consult in the same form.</p>
+    <div class="btns"><a class="btn solid" href="#commission">Commission a piece</a><a class="btn" href="#sewn">See what I've made</a></div>
+  </div>
+</section>
+
+<section id="sewn">
+  <div class="wrap stack" style="gap:36px">
+    <div class="spread">
+      <div class="main stack"><p class="kicker">From the sewing table</p><h2 class="h2">Pieces I've made.</h2></div>
+      <aside class="margin"><p class="note">each one made<br>for one person</p></aside>
+    </div>
+    <div class="sewn" data-sewn></div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap stack" style="gap:36px">
+    <p class="kicker">How a commission works</p>
     <ol class="steps five">
-      <li><b>Consult</b><span>We talk vision, occasion and timeline.</span></li>
-      <li><b>Sketch</b><span>You approve the design before a cut is made.</span></li>
-      <li><b>Fabric</b><span>I source the right material for the dress.</span></li>
+      <li><b>Request</b><span>Describe the piece and send your inspiration.</span></li>
+      <li><b>Consult</b><span>We meet at the time you booked and settle the design.</span></li>
+      <li><b>Sketch & fabric</b><span>You approve the sketch, then I source the material.</span></li>
       <li><b>Fitting</b><span>We adjust it on your body until it's right.</span></li>
       <li><b>Delivery</b><span>Pressed, packed and ready for the day.</span></li>
     </ol>
   </div>
 </section>
 
-<section class="band">
-  <div class="wrap spread">
-    <div class="main stack">
-      <p class="kicker">Made for</p>
-      <h2 class="h2">The days you'll remember.</h2>
-      <div class="tags">
-        <span class="tag">Wedding guest</span><span class="tag">Bridal party</span><span class="tag">Gala</span>
-        <span class="tag">Church</span><span class="tag">Birthday</span><span class="tag">Photoshoot</span><span class="tag">Everyday statement</span>
-      </div>
-    </div>
-    <aside class="margin"><p class="note">vintage fabric<br>upcycles welcome</p></aside>
-  </div>
-</section>
-
 <section id="commission">
-  <div class="wrap spread">
-    <div class="main stack">
-      <p class="kicker">Commission</p>
-      <h2 class="h2">Describe the dress.</h2>
-      <form class="req" data-form="custom">
-        <div class="two">
-          <label for="c-name">Name<input id="c-name" name="name" required autocomplete="name"></label>
-          <label for="c-email">Email<input id="c-email" name="email" type="email" required autocomplete="email"></label>
-        </div>
-        <div class="two">
-          <label for="c-occ">Occasion<select id="c-occ" name="occasion"><option>Wedding guest</option><option>Gala or formal</option><option>Church</option><option>Birthday</option><option>Something else</option></select></label>
-          <label for="c-date">Date needed<input id="c-date" name="date" type="date"></label>
-        </div>
-        <label for="c-vision">Your vision<textarea id="c-vision" name="vision" rows="5" placeholder="The color, the silhouette, how you want to feel walking in…"></textarea></label>
-        <button class="btn solid" type="submit">Request a consult</button>
+  <div class="wrap stack" style="gap:28px">
+    <div class="spread">
+      <div class="main stack"><p class="kicker">Commission</p><h2 class="h2">Tell me what to make.</h2></div>
+      <aside class="margin"><p class="note">a photo you love<br>says a lot. add it.</p></aside>
+    </div>
+    <div class="form-card" data-commission-wrap>
+      <form class="req" data-commission novalidate style="gap:34px">
+        <fieldset>
+          <legend><small>Step 1</small>About you</legend>
+          <div class="two">
+            <label for="c-name">Name<input id="c-name" name="name" required autocomplete="name"></label>
+            <label for="c-email">Email<input id="c-email" name="email" type="email" required autocomplete="email"></label>
+          </div>
+          <label for="c-phone">Phone (optional)<input id="c-phone" name="phone" type="tel" autocomplete="tel"></label>
+        </fieldset>
+
+        <fieldset>
+          <legend><small>Step 2</small>The piece</legend>
+          <div class="two">
+            <label for="c-piece">What should I make?<select id="c-piece" name="piece"><option>Dress</option><option>Gown</option><option>Two-piece set</option><option>Skirt</option><option>Top</option><option>Something else</option></select></label>
+            <label for="c-occ">Occasion<select id="c-occ" name="occasion"><option>Wedding guest</option><option>Bridal party</option><option>Gala or formal</option><option>Church</option><option>Birthday</option><option>Photoshoot</option><option>Everyday</option></select></label>
+          </div>
+          <div class="two">
+            <label for="c-date">Date you need it<input id="c-date" name="date" type="date"></label>
+            <label for="c-budget">Budget<select id="c-budget" name="budget"><option>Let's talk at the consult</option><option>Under $250</option><option>$250 – $500</option><option>$500 – $1,000</option><option>$1,000+</option></select></label>
+          </div>
+          <label for="c-vision">Describe it<textarea id="c-vision" name="vision" rows="5" placeholder="The color, the silhouette, the fabric, how you want to feel walking in…"></textarea></label>
+        </fieldset>
+
+        <fieldset>
+          <legend><small>Step 3</small>Inspiration photos</legend>
+          <div class="drop" role="button" tabindex="0" aria-label="Add inspiration photos">
+            <b>Drop photos here</b>
+            <span class="muted">or tap to choose from your phone · up to 10 images</span>
+          </div>
+          <input id="c-photos" type="file" accept="image/*" multiple hidden>
+          <div class="thumbs"></div>
+        </fieldset>
+
+        <fieldset>
+          <legend><small>Step 4</small>Book your consult</legend>
+          <label for="c-format" style="max-width:320px">Consult format<select id="c-format" name="format"><option>Virtual</option><option>In person</option></select></label>
+          <div data-consult-cal></div>
+          <label class="check" for="c-fit"><input id="c-fit" type="checkbox"> Book my first fitting now too</label>
+          <div data-fitting hidden>
+            <p class="muted" style="margin-bottom:10px">Pick a fitting date at least three weeks after your consult. You can move it later.</p>
+            <div data-fit-cal></div>
+          </div>
+        </fieldset>
+
+        <p class="sent" data-error hidden></p>
+        <button class="btn solid" type="submit">Send request & book consult</button>
       </form>
     </div>
-    <aside class="margin">
-      <p class="note">a photo you love<br>says a lot. bring it.</p>
-    </aside>
   </div>
 </section>
 """
@@ -384,12 +434,12 @@ ABOUT = """
       <p class="kicker">Why I do this</p>
       <p>So, let me say this first. I love clothes that carry a story. A coat that survived three owners. A dress somebody saved for Sunday. Fast fashion can't give you that.</p>
       <p>Margin Material started with thrifting. I learned to read a garment the way you read a letter. The more I found, the more I wanted to style, and the more I styled, the more I wanted to make.</p>
-      <p>That's how one passion became three chapters. I style. I find. I make. And I document all of it so you can watch a piece travel from the bin or the sketchbook to your closet.</p>
+      <p>That's how one passion became three chapters. I find. I style. I make. And I document all of it so you can watch a piece travel from the bin or the sketchbook to your closet.</p>
     </div>
     <aside class="margin">
-      <p class="note sage"><small>Chapter I</small><a href="styling.html" style="text-decoration:none">Styled →</a></p>
-      <p class="note rust"><small>Chapter II</small><a href="vintage.html" style="text-decoration:none">Found →</a></p>
-      <p class="note lav"><small>Chapter III</small><a href="custom.html" style="text-decoration:none">Made →</a></p>
+      <p class="note rust"><small>Chapter I</small><a href="found.html" style="text-decoration:none">Found →</a></p>
+      <p class="note sage"><small>Chapter II</small><a href="styled.html" style="text-decoration:none">Styled →</a></p>
+      <p class="note lav"><small>Chapter III</small><a href="made.html" style="text-decoration:none">Made →</a></p>
     </aside>
   </div>
 </section>
@@ -400,25 +450,14 @@ ABOUT = """
     <aside class="margin"><p class="note">the standard<br>behind every seam</p></aside>
   </div>
 </section>
-
-<section class="band">
-  <div class="wrap stack" style="gap:30px">
-    <p class="kicker">Read the patch</p>
-    <div class="entries">
-      <div class="entry"><div><h3 class="h3">The open book</h3><p class="muted">The sharpest notes live in the margins. So do the best pieces.</p></div><p class="note sage">the journal</p></div>
-      <div class="entry"><div><h3 class="h3">The needle and thread</h3><p class="muted">Every custom dress starts with one stitch.</p></div><p class="note lav">chapter III</p></div>
-      <div class="entry"><div><h3 class="h3">The scissors and the tee</h3><p class="muted">Vintage, restored and remade for right now.</p></div><p class="note rust">chapter II</p></div>
-    </div>
-  </div>
-</section>
 """
 
 PAGES = [
-    ("index.html", "Margin Material Journal", "Lady Britt's studio for personal styling, vintage reselling and custom dressmaking.", "ch-found", HOME),
-    ("styling.html", "Personal Styling · Margin Material", "Closet edits, shopping sessions and event styling by Lady Britt.", "ch-styled", STYLING),
-    ("vintage.html", "Vintage · Margin Material", "One-of-one vintage pieces, hand-picked and restored. Shop here or on Depop.", "ch-found", VINTAGE),
-    ("custom.html", "Custom Dresses · Margin Material", "Custom dresses designed and sewn to your measurements by Lady Britt.", "ch-made", CUSTOM),
-    ("about.html", "About Lady Britt · Margin Material", "Meet Lady Britt, the stylist, vintage hunter and dressmaker behind Margin Material.", "ch-found", ABOUT + SUBSCRIBE),
+    ("index.html", "Margin Material Journal", "Vintage on Depop, certified virtual styling and custom pieces by Lady Britt.", "ch-found", HOME),
+    ("found.html", "Found · Margin Material", "One-of-one vintage pieces by Lady Britt. Browse here and buy on Depop.", "ch-found", FOUND),
+    ("styled.html", "Styled · Margin Material", "Certified virtual styling with Lady Britt. Book and pay upfront for your session.", "ch-styled", STYLED),
+    ("made.html", "Made · Margin Material", "Custom pieces sewn by Lady Britt. Request a commission and book your consult.", "ch-made", MADE),
+    ("about.html", "About Lady Britt · Margin Material", "Meet Lady Britt, the vintage hunter, stylist and dressmaker behind Margin Material.", "ch-found", ABOUT + SUBSCRIBE),
 ]
 
 for file, title, desc, ch, body in PAGES:

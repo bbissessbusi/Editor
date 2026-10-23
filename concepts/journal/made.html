@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Made · Margin Material</title>
+<meta name="description" content="Custom pieces sewn by Lady Britt. Request a commission and book your consult.">
+<meta name="theme-color" content="#fde9dc">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="assets/journal.css">
+</head>
+<body class="ch-made">
+<header class="mast">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/logo-sm.webp" alt="" width="40" height="40"><b>Margin Material</b></a>
+    <nav aria-label="Chapters"><ul><li><a href="found.html"><span class="num">I</span>Found</a></li><li><a href="styled.html"><span class="num">II</span>Styled</a></li><li><a href="made.html" aria-current="page"><span class="num">III</span>Made</a></li><li><a href="about.html">About</a></li></ul></nav>
+  </div>
+</header>
+<main>
+
+<section class="opener">
+  <span class="big-num" aria-hidden="true">III</span>
+  <div class="wrap">
+    <p class="kicker">Chapter III · Made</p>
+    <h1 class="h1">Made. <em>For one.</em></h1>
+    <p class="lede">Every piece below was drawn, cut and sewn by hand. Tell me what you want made and book your consult in the same form.</p>
+    <div class="btns"><a class="btn solid" href="#commission">Commission a piece</a><a class="btn" href="#sewn">See what I've made</a></div>
+  </div>
+</section>
+
+<section id="sewn">
+  <div class="wrap stack" style="gap:36px">
+    <div class="spread">
+      <div class="main stack"><p class="kicker">From the sewing table</p><h2 class="h2">Pieces I've made.</h2></div>
+      <aside class="margin"><p class="note">each one made<br>for one person</p></aside>
+    </div>
+    <div class="sewn" data-sewn></div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap stack" style="gap:36px">
+    <p class="kicker">How a commission works</p>
+    <ol class="steps five">
+      <li><b>Request</b><span>Describe the piece and send your inspiration.</span></li>
+      <li><b>Consult</b><span>We meet at the time you booked and settle the design.</span></li>
+      <li><b>Sketch & fabric</b><span>You approve the sketch, then I source the material.</span></li>
+      <li><b>Fitting</b><span>We adjust it on your body until it's right.</span></li>
+      <li><b>Delivery</b><span>Pressed, packed and ready for the day.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section id="commission">
+  <div class="wrap stack" style="gap:28px">
+    <div class="spread">
+      <div class="main stack"><p class="kicker">Commission</p><h2 class="h2">Tell me what to make.</h2></div>
+      <aside class="margin"><p class="note">a photo you love<br>says a lot. add it.</p></aside>
+    </div>
+    <div class="form-card" data-commission-wrap>
+      <form class="req" data-commission novalidate style="gap:34px">
+        <fieldset>
+          <legend><small>Step 1</small>About you</legend>
+          <div class="two">
+            <label for="c-name">Name<input id="c-name" name="name" required autocomplete="name"></label>
+            <label for="c-email">Email<input id="c-email" name="email" type="email" required autocomplete="email"></label>
+          </div>
+          <label for="c-phone">Phone (optional)<input id="c-phone" name="phone" type="tel" autocomplete="tel"></label>
+        </fieldset>
+
+        <fieldset>
+          <legend><small>Step 2</small>The piece</legend>
+          <div class="two">
+            <label for="c-piece">What should I make?<select id="c-piece" name="piece"><option>Dress</option><option>Gown</option><option>Two-piece set</option><option>Skirt</option><option>Top</option><option>Something else</option></select></label>
+            <label for="c-occ">Occasion<select id="c-occ" name="occasion"><option>Wedding guest</option><option>Bridal party</option><option>Gala or formal</option><option>Church</option><option>Birthday</option><option>Photoshoot</option><option>Everyday</option></select></label>
+          </div>
+          <div class="two">
+            <label for="c-date">Date you need it<input id="c-date" name="date" type="date"></label>
+            <label for="c-budget">Budget<select id="c-budget" name="budget"><option>Let's talk at the consult</option><option>Under $250</option><option>$250 – $500</option><option>$500 – $1,000</option><option>$1,000+</option></select></label>
+          </div>
+          <label for="c-vision">Describe it<textarea id="c-vision" name="vision" rows="5" placeholder="The color, the silhouette, the fabric, how you want to feel walking in…"></textarea></label>
+        </fieldset>
+
+        <fieldset>
+          <legend><small>Step 3</small>Inspiration photos</legend>
+          <div class="drop" role="button" tabindex="0" aria-label="Add inspiration photos">
+            <b>Drop photos here</b>
+            <span class="muted">or tap to choose from your phone · up to 10 images</span>
+          </div>
+          <input id="c-photos" type="file" accept="image/*" multiple hidden>
+          <div class="thumbs"></div>
+        </fieldset>
+
+        <fieldset>
+          <legend><small>Step 4</small>Book your consult</legend>
+          <label for="c-format" style="max-width:320px">Consult format<select id="c-format" name="format"><option>Virtual</option><option>In person</option></select></label>
+          <div data-consult-cal></div>
+          <label class="check" for="c-fit"><input id="c-fit" type="checkbox"> Book my first fitting now too</label>
+          <div data-fitting hidden>
+            <p class="muted" style="margin-bottom:10px">Pick a fitting date at least three weeks after your consult. You can move it later.</p>
+            <div data-fit-cal></div>
+          </div>
+        </fieldset>
+
+        <p class="sent" data-error hidden></p>
+        <button class="btn solid" type="submit">Send request & book consult</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="wrap">
+    <span class="hand">Margin Material · est. 2026</span>
+    <ul>
+      <li><a href="found.html">Vintage</a></li>
+      <li><a href="styled.html">Virtual Styling</a></li>
+      <li><a href="made.html">Custom Pieces</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://depop.app.link/KBBployVb7b" target="_blank" rel="noopener">Depop</a></li>
+    </ul>
+    <span>© <span data-year>2026</span> Margin Material by Lady Britt</span>
+  </div>
+</footer>
+<script src="assets/journal.js"></script>
+</body>
+</html>
