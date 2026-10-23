@@ -14,7 +14,7 @@ window.SITE = {
   // ── Contact + links ──
   email: "hello@marginmaterial.com",  // booking + custom requests arrive here
   bookingUrl: "",                     // optional Calendly/Acuity link for styling sessions
-  depop: "https://depop.app.link/KBBployVb7b",
+  depop: "https://www.depop.com/margin_material_vintage/",
   substack: "",                       // e.g. "https://ladybritt.substack.com"
   instagram: "",
   tiktok: "",

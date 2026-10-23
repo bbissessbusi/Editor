@@ -6,7 +6,7 @@
 // ── I. FOUND: your Depop listings ─────────────────────────
 // Each piece links straight to its Depop listing, where the buyer checks out.
 // image: a photo path such as "assets/found/sunday-midi.jpg" ("" shows a swatch)
-const DEPOP_SHOP = "https://depop.app.link/KBBployVb7b";
+const DEPOP_SHOP = "https://www.depop.com/margin_material_vintage/";
 const PIECES = [
   { name: "The Sunday Best Midi",   price: 148, cat: "dresses",     era: "1970s", size: "M",   sw: 1, sold: false, note: "the one",     image: "", depop: "" },
   { name: "Lavender Silk Blouse",   price: 64,  cat: "tops",        era: "1980s", size: "S",   sw: 3, sold: false, note: "real silk",   image: "", depop: "" },
