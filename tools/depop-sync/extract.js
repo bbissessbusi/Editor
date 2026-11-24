@@ -131,7 +131,8 @@ function extractDepopInventory(extraJson, seedItems) {
       category: guessCategory(cleanTitle(desc, slug), `${desc} ${slug}`),
       image: firstImage(o),
       url: `${ORIGIN}/products/${slug}/`,
-      sold: o.sold === true || o.isSold === true || status === "sold" || status === "purchased",
+      sold: o.sold === true || o.isSold === true || /sold|purchased/.test(status),
+      userId: o.user_id != null ? String(o.user_id) : null,
     });
     return true;
   };
@@ -185,9 +186,15 @@ function extractDepopInventory(extraJson, seedItems) {
 
   // Depop slugs start with the seller's username. If any listing carries this
   // shop's name, drop the rest (e.g. "you may also like" items from other sellers).
+  // Depop sometimes serves slugs with a typo in the username part ("margin_material_9intage-…"),
+  // so match on the seller's user_id as well as on the prefix.
   let list = [...items.values()];
-  const own = list.filter((it) => shop && it.id.toLowerCase().startsWith(shop + "-"));
+  const tally = {};
+  list.filter((it) => it.userId && shop && it.id.toLowerCase().startsWith(shop.slice(0, 4))).forEach((it) => { tally[it.userId] = (tally[it.userId] || 0) + 1; });
+  const sellerId = Object.keys(tally).sort((a, b) => tally[b] - tally[a])[0];
+  const own = list.filter((it) => (sellerId && it.userId === sellerId) || (shop && it.id.toLowerCase().startsWith(shop + "-")));
   if (own.length) list = own;
+  list.forEach((it) => { delete it.userId; });
   return { shop, source: location.href, fetchedAt: new Date().toISOString(), count: list.length, items: list, _sample: sample };
 }
 
