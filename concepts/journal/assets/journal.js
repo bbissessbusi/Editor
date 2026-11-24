@@ -49,7 +49,7 @@ function pieceCard(p, i) {
   const stamp = p.sold ? `<span class="stamp">Sold</span>` : "";
   const action = p.sold
     ? `<span class="meta">Gone to a good home.</span>`
-    : `<div class="btns"><a class="btn solid" href="${esc(url)}" target="_blank" rel="noopener">Buy on Depop</a></div>`;
+    : `<div class="btns"><a class="btn solid depop-red" href="${esc(url)}" target="_blank" rel="noopener">Buy on Depop</a></div>`;
   return `<article class="piece">
     <a class="cover" href="${esc(url)}" target="_blank" rel="noopener" aria-label="${esc(p.name)} on Depop">
       <div class="photo" style="--tilt:${tilts[i % tilts.length]}">${media(p, p.name)}${stamp}</div>

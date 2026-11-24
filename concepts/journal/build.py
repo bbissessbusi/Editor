@@ -127,7 +127,7 @@ HOME = f"""
       <p class="kicker">Margin Material · Chapter I · Found</p>
       <h1 class="h1">Found. <em>Then gone.</em></h1>
       <p class="lede">Hand-picked vintage from the back rack and the bottom of the bin. Every piece is one of one, and every piece checks out on Depop.</p>
-      <div class="btns"><a class="btn solid" href="found.html">Shop the rack</a><a class="btn" data-depop-shop href="#" target="_blank" rel="noopener">Open Depop shop</a></div>
+      <div class="btns"><a class="btn solid depop-red" href="found.html">Shop the rack</a><a class="btn" data-depop-shop href="#" target="_blank" rel="noopener">Open Depop shop</a></div>
     </div>
     <aside class="margin" style="align-items:center">
       <img class="patch" src="assets/logo.webp" alt="Margin Material patch: an open book, a needle and thread, scissors and a tee" width="150" height="150">
@@ -192,7 +192,7 @@ FOUND = f"""
     <p class="kicker">Chapter I · Found</p>
     <h1 class="h1">Found. <em>Then gone.</em></h1>
     <p class="lede">Hand-picked, restored and listed one piece at a time. Browse here, then tap any piece to buy it on Depop.</p>
-    <div class="btns"><a class="btn solid" href="#rack">Shop the rack</a><a class="btn" data-depop-shop href="#" target="_blank" rel="noopener">Follow on Depop</a></div>
+    <div class="btns"><a class="btn solid depop-red" href="#rack">Shop the rack</a><a class="btn" data-depop-shop href="#" target="_blank" rel="noopener">Follow on Depop</a></div>
   </div>
 </section>
 

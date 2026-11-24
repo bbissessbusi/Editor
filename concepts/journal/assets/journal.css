@@ -382,3 +382,7 @@ legend small { font-family: var(--body); font-size: 12px; letter-spacing: .14em;
   --ch-soft: var(--rust);
 }
 .opener.ch-found .btn.solid, .ch-found .opener .btn.solid { color: #fff6ef; }
+
+/* Depop red for "Shop the rack" and "Buy on Depop" */
+.btn.solid.depop-red, .opener .btn.solid.depop-red { background: #ff2300; border-color: #ff2300; color: #ffffff; }
+.btn.solid.depop-red:hover { background: #e01f00; border-color: #e01f00; }
