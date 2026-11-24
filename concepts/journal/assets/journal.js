@@ -64,7 +64,7 @@ function pieceCard(p, i) {
 let INVENTORY = PIECES;
 const fromFeed = (it, i) => ({
   name: it.title || "Vintage piece", price: it.price, cat: it.category || "other",
-  era: it.brand || "", size: it.size || "", sw: (i % 6) + 1, sold: !!it.sold,
+  era: it.era || "", size: it.size || "", sw: (i % 6) + 1, sold: !!it.sold,
   note: "", image: it.image || "", depop: it.url || "",
 });
 const feedReady = fetch("assets/depop-feed.json", { cache: "no-cache" })

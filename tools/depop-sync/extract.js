@@ -21,18 +21,36 @@ function extractDepopInventory(extraJson, seedItems) {
   // so the callers extract at every step and pass the running list back in.
 
   const CATS = [
-    ["dresses", /\b(dress|gown|maxi|midi|mini dress|sundress|slip)\b/i],
-    ["outerwear", /\b(coat|jacket|blazer|trench|parka|cardigan|vest|puffer)\b/i],
-    ["bottoms", /\b(jeans|pants|trousers|skirt|shorts|slacks)\b/i],
-    ["accessories", /\b(bag|purse|clutch|tote|belt|scarf|hat|jewel|necklace|earring|bracelet|shoe|boot|heel|sandal)\b/i],
-    ["tops", /\b(top|blouse|shirt|tee|t-shirt|sweater|knit|tank|cami|bodysuit|corset|hoodie|sweatshirt)\b/i],
+    ["dresses", /\b(?:dress|gown|maxi|midi|mini dress|sundress|slip dress)(?:es|s)?\b/i],
+    ["outerwear", /\b(?:coat|jacket|blazer|trench|parka|cardigan|vest|puffer|suit)s?\b/i],
+    ["bottoms", /\b(?:jeans|pants|trousers|skirt|shorts|slacks)s?\b/i],
+    ["tops", /\b(?:top|blouse|shirt|tee|t-shirt|polo|crewneck|sweater|knit|tank|cami|bodysuit|corset|hoodie|sweatshirt)s?\b/i],
+    ["accessories", /\b(?:bag|purse|clutch|tote|belt|scarf|hat|jewel(?:le)?ry|necklace|earring|bracelet|shoe|boot|heel|sandal|loafer|sneaker|trainer|watch|chronograph|sunglass(?:es)?)s?\b/i],
   ];
   const catOf = (text) => (CATS.find(([, re]) => re.test(text || "")) || ["other"])[0];
   // The title decides first ("…Plaid Blouse" is a top even if the description says "dress it up").
   const guessCategory = (title, more) => { const c = catOf(title); return c !== "other" ? c : catOf(more); };
 
+  // Pick the line (or sentence) that names the piece. Many listings open with a hook
+  // ("SUNNY, RETRO, AND IMPOSSIBLE TO IGNORE."), so prefer the first candidate that
+  // mentions a garment and isn't shouted in capitals.
+  const GARMENT = /\b(?:dress|gown|blouse|shirt|tee|t-shirt|top|polo|crewneck|sweater|cardigan|sweatshirt|hoodie|blazer|jacket|coat|vest|jeans|pants|trousers|skirt|shorts|suit|romper|jumpsuit|tank|cami|bodysuit|loafer|shoe|boot|heel|sandal|sneaker|bag|purse|clutch|watch|chronograph)(?:es|s)?\b/i;
+  const shouty = (t) => { const L = t.replace(/[^A-Za-z]/g, ""); return L.length > 8 && L.replace(/[^A-Z]/g, "").length / L.length > 0.6; };
+  const titleCase = (t) => t.toLowerCase().replace(/\b([a-z])/g, (m) => m.toUpperCase());
+  const pickLine = (desc) => {
+    const lines = String(desc || "").split(/\r?\n/).map((x) => x.trim()).filter(Boolean).slice(0, 6);
+    const cands = [];
+    // within a line, single sentences come before the whole line
+    lines.forEach((l) => { l.split(/(?<=[.!?])\s+/).forEach((x) => x !== l && cands.push(x)); cands.push(l); });
+    const bare = (x) => x.replace(/#\S+/g, "").replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}]/gu, "").split(/\s+[|•·]\s+/)[0].trim();
+    const good = cands.find((c) => GARMENT.test(bare(c)) && !shouty(bare(c)) && bare(c).length <= 100)
+      || cands.find((c) => GARMENT.test(bare(c)) && bare(c).length <= 100);
+    const t = (good || lines[0] || "").replace(/(?<![.].)[.!]+$/, "");
+    return shouty(bare(t)) ? titleCase(t) : t;
+  };
+
   const cleanTitle = (desc, slug) => {
-    let t = String(desc || "").split(/\r?\n/).map((s) => s.trim()).find(Boolean) || "";
+    let t = pickLine(desc);
     t = t.replace(/#\S+/g, "")
       .replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}]/gu, "")
       .split(/\s+[|•·]\s+/)[0]
@@ -67,7 +85,7 @@ function extractDepopInventory(extraJson, seedItems) {
     for (const k of ["priceAmount", "price_amount", "totalPrice", "total_price"]) if (o[k] != null) walk(o[k], k, 0);
     const ok = found.filter((f) => f.value > 0);
     if (!ok.length) return { price: null, currency: null };
-    const pick = ok.find((f) => /discount|sale|reduced/i.test(f.path)) || ok.find((f) => /total/i.test(f.path)) || ok[0];
+    const pick = ok.find((f) => /current_price\.total_price$/i.test(f.path)) || ok.find((f) => /discount|sale|reduced/i.test(f.path)) || ok.find((f) => /total/i.test(f.path)) || ok[0];
     let currency = null;
     const cw = (v, d) => { if (!v || typeof v !== "object" || d > 6 || currency) return; for (const [k, x] of Object.entries(v)) { if (/currency/i.test(k) && typeof x === "string") { currency = x; return; } cw(x, d + 1); } };
     cw({ a: o.pricing, b: o.price, c: o.currency }, 0);
@@ -127,8 +145,13 @@ function extractDepopInventory(extraJson, seedItems) {
       id: slug,
       title: cleanTitle(desc, slug),
       price, currency, size,
-      brand: (o.brand && (o.brand.name || o.brand)) || o.brandName || "",
-      category: guessCategory(cleanTitle(desc, slug), `${desc} ${slug}`),
+      brand: (o.brand && (o.brand.name || o.brand)) || o.brandName || o.brand_name || "",
+      // Depop's own category ("Blazers", "Loafers") wins, then its product type, then the
+      // title, then Depop's broad group ("suits" also covers blazers), then the description.
+      category: [o.category_name, o.attributes && o.attributes.product_type, cleanTitle(desc, slug), o.attributes && o.attributes.group, `${desc} ${slug}`]
+        .map((x) => catOf(String(x || "").replace(/-/g, " "))).find((c) => c !== "other") || "other",
+      era: ((a) => (Array.isArray(a) ? a[0] : a) || "")(o.attributes && o.attributes.age),
+      description: String(desc).replace(/#\S+/g, "").trim().slice(0, 400),
       image: firstImage(o),
       url: `${ORIGIN}/products/${slug}/`,
       sold: o.sold === true || o.isSold === true || /sold|purchased/.test(status),
