@@ -18,16 +18,22 @@ const runner = `
   box.style.cssText = "position:fixed;z-index:2147483647;left:50%;top:20px;transform:translateX(-50%);background:#23182f;color:#fde9dc;font:600 15px/1.4 -apple-system,Arial,sans-serif;padding:14px 22px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.3)";
   document.body.appendChild(box);
   const say = (t) => (box.textContent = t);
-  let last = -1, stable = 0;
-  while (stable < 3) {
-    const n = document.querySelectorAll('a[href*="/products/"]').length;
-    say("Margin Material: loading listings… " + n);
-    if (n === last) stable++; else { stable = 0; last = n; }
-    window.scrollBy(0, 4000);
-    await new Promise((r) => setTimeout(r, 1400));
-  }
   ${extractor}
-  const feed = extractDepopInventory([]);
+  let feed = extractDepopInventory([], []), quiet = 0;
+  while (quiet < 5) {
+    const before = feed.count;
+    say("Margin Material: reading your shop… " + feed.count + " listings");
+    window.scrollBy(0, 1800);
+    await new Promise((r) => setTimeout(r, 1800));
+    const more = [...document.querySelectorAll("button")].find((b) => /load more|show more|see more/i.test(b.textContent));
+    if (more) more.click();
+    feed = extractDepopInventory([], feed.items);
+    quiet = feed.count > before ? 0 : quiet + 1;
+  }
+  window.scrollTo(0, 0);
+  await new Promise((r) => setTimeout(r, 1500));
+  feed = extractDepopInventory([], feed.items);
+  delete feed._sample;
   const blob = new Blob([JSON.stringify(feed, null, 2)], { type: "application/json" });
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob); a.download = "depop-feed.json";
