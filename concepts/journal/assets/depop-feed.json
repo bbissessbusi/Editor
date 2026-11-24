@@ -1,12 +1,13 @@
 {
   "shop": "margin_material_vintage",
   "source": "https://www.depop.com/margin_material_vintage/",
-  "fetchedAt": "2026-11-24T02:13:29.842Z",
+  "fetchedAt": "2026-11-24T02:31:12.961Z",
   "count": 11,
   "items": [
     {
       "id": "margin_material_vintage-eva-laurel-ny-vintage-80s-955d",
       "title": "Eva Laurel NY Vintage 80s Multicolor Paisley Plaid Blouse",
+      "price": 12,
       "currency": "USD",
       "size": "10",
       "category": "tops",
@@ -17,6 +18,7 @@
     {
       "id": "margin_material_vintage-vintage-80s-samantha-stevens-blue-1345",
       "title": "Vintage 80s Samantha Stevens Blue Polka Dot Satin Blouse",
+      "price": 12,
       "currency": "USD",
       "size": "10",
       "category": "tops",
@@ -27,6 +29,7 @@
     {
       "id": "margin_material_vintage-vintage-woods-gray-champagne-cc19",
       "title": "Vintage Woods & Gray Champagne Gold Embroidered Evening Jacket",
+      "price": 15,
       "currency": "USD",
       "size": "S",
       "category": "outerwear",
@@ -37,6 +40,7 @@
     {
       "id": "margin_material_vintage-vintage-1993-get-off-my-1e35",
       "title": "Vintage 1993 \"Get Off My Back\" Pig & Chicken Graphic Tee",
+      "price": 9,
       "currency": "USD",
       "size": "XL",
       "category": "tops",
@@ -47,6 +51,7 @@
     {
       "id": "margin_material_vintage-vintage-levis-550-black-relaxed-2429",
       "title": "Vintage Levi’s 550 Black Relaxed Fit Jeans",
+      "price": 15,
       "currency": "USD",
       "size": "31\"",
       "category": "bottoms",
@@ -57,6 +62,7 @@
     {
       "id": "margin_material_vintage-vintage-ivy-wear-high-waisted-84fa",
       "title": "Vintage Ivy Wear High Waisted Mom Jeans",
+      "price": 10,
       "currency": "USD",
       "size": "M",
       "category": "bottoms",
@@ -67,6 +73,7 @@
     {
       "id": "margin_material_vintage-vintage-talbots-houndstooth-skirt-suit-0364",
       "title": "Vintage Talbots Houndstooth Skirt Suit",
+      "price": 14,
       "currency": "USD",
       "size": "8",
       "category": "bottoms",
@@ -77,6 +84,7 @@
     {
       "id": "margin_material_vintage-vintage-lawman-black-western-f844",
       "title": "Vintage Lawman Black Western Jeans",
+      "price": 16,
       "currency": "USD",
       "size": "M",
       "category": "bottoms",
@@ -87,6 +95,7 @@
     {
       "id": "margin_material_vintage-vintage-80s-pussy-bow-blouse-4d2f",
       "title": "Vintage 80s Pussy Bow Blouse",
+      "price": 30,
       "currency": "USD",
       "size": "M",
       "category": "tops",
@@ -97,6 +106,7 @@
     {
       "id": "margin_material_vintage-vintage-90s-columbia-bugaboo-3-in-1-b5c0",
       "title": "Vintage 90s Columbia Bugaboo 3-in-1 Jacket",
+      "price": 22,
       "currency": "USD",
       "size": "XXL",
       "category": "outerwear",
@@ -107,6 +117,7 @@
     {
       "id": "margin_material_vintage-lagence-blue-white-vertical-9bfe",
       "title": "L’AGENCE Blue & White Vertical Striped Silk Button Down Blouse",
+      "price": 35,
       "currency": "USD",
       "size": "S",
       "category": "tops",

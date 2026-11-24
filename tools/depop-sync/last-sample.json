@@ -1,0 +1,249 @@
+{
+  "id": 983842198,
+  "user_id": 403036590,
+  "brand_id": 24933,
+  "brand_name": "Cross Colours",
+  "active_status": "active",
+  "status": "STATUS_ONSALE",
+  "category_name": "Blazers",
+  "description": "Cross Country Fashions Vintage 80s Kelly Green Blazer | Crest Embossed Sport Coat\n\nIYKYK — this green is IT. 💚 Structured kelly green blazer giving country club, old money, St. Patrick's Day chic all in one. Tone-on-tone embossed crest on breast pocket, notched lapels, single button, fully lined. M",
+  "updated_at": "2026-11-03T23:27:43.314Z",
+  "created_at": "2026-11-03T23:27:42.728667Z",
+  "pictures": [
+    {
+      "id": 5121576398,
+      "formats": {
+        "P0": {
+          "height": 1280,
+          "width": 1280,
+          "url": "https://media-photos.depop.com/b1/403036590/5121576398_df5095a34f5943e7aafae3d99ba79cf0/P0.jpg"
+        }
+      },
+      "original_width": 1280,
+      "original_height": 1280,
+      "is_square": true
+    },
+    {
+      "id": 5121570460,
+      "formats": {
+        "P0": {
+          "height": 1280,
+          "width": 1280,
+          "url": "https://media-photos.depop.com/b1/403036590/5121570460_34c0022d8905457ba8b127ff66b16de6/P0.jpg"
+        }
+      },
+      "original_width": 1280,
+      "original_height": 1280,
+      "is_square": true
+    },
+    {
+      "id": 5121554265,
+      "formats": {
+        "P0": {
+          "height": 1280,
+          "width": 1280,
+          "url": "https://media-photos.depop.com/b1/403036590/5121554265_6c02c5c06b0d4072afa6dfafdd6a5266/P0.jpg"
+        }
+      },
+      "original_width": 1280,
+      "original_height": 1280,
+      "is_square": true
+    },
+    {
+      "id": 5121565976,
+      "formats": {
+        "P0": {
+          "height": 1280,
+          "width": 1280,
+          "url": "https://media-photos.depop.com/b1/403036590/5121565976_dfe90446f8bb40c298287d0341794f08/P0.jpg"
+        }
+      },
+      "original_width": 1280,
+      "original_height": 1280,
+      "is_square": true
+    },
+    {
+      "id": 5121578660,
+      "formats": {
+        "P0": {
+          "height": 1280,
+          "width": 1280,
+          "url": "https://media-photos.depop.com/b1/403036590/5121578660_67bf70902bbd4df2814b8bcf718947ef/P0.jpg"
+        }
+      },
+      "original_width": 1280,
+      "original_height": 1280,
+      "is_square": true
+    },
+    {
+      "id": 5121578273,
+      "formats": {
+        "P0": {
+          "height": 1280,
+          "width": 1280,
+          "url": "https://media-photos.depop.com/b1/403036590/5121578273_45279b206a9447b580dc43e57f7a202a/P0.jpg"
+        }
+      },
+      "original_width": 1280,
+      "original_height": 1280,
+      "is_square": true
+    },
+    {
+      "id": 5121580503,
+      "formats": {
+        "P0": {
+          "height": 1280,
+          "width": 1280,
+          "url": "https://media-photos.depop.com/b1/403036590/5121580503_c1fc919817434e52af067244a4fdeaec/P0.jpg"
+        }
+      },
+      "original_width": 1280,
+      "original_height": 1280,
+      "is_square": true
+    }
+  ],
+  "location": "United States",
+  "country": "US",
+  "slug": "margin_material_9intage-cross-country-fashions-vintage-80s-259d",
+  "variant_set_id": 38,
+  "variants_all": [
+    {
+      "id": 19,
+      "quantity": 1,
+      "status": "STATUS_ONSALE",
+      "variant": "XL"
+    }
+  ],
+  "listed_quantity": 1,
+  "attributes": {
+    "condition": "used_excellent",
+    "colour": [
+      "green"
+    ],
+    "style": [
+      "preppy",
+      "minimalist"
+    ],
+    "age": [
+      "90s"
+    ],
+    "source": [
+      "preloved",
+      "vintage"
+    ],
+    "brand": "cross-colours",
+    "gender": "female",
+    "is_kids": false,
+    "group": "suits",
+    "product_type": "tailored-jackets",
+    "additional_attributes": {
+      "body-fit": [
+        "petite",
+        "plus-size"
+      ],
+      "occasion": [
+        "daytime",
+        "festival",
+        "holiday"
+      ],
+      "size-fit": [
+        "runs-small"
+      ]
+    }
+  },
+  "shipping_method": {
+    "shipping_id": "USPS",
+    "parcel_size": "medium",
+    "payer": "buyer",
+    "ship_from": 39761867
+  },
+  "is_boosted": true,
+  "boosted_at": "2026-11-03T23:27:42.896970Z",
+  "sizes": [
+    {
+      "name": "XL",
+      "id": 19,
+      "quantity": 1,
+      "status": "STATUS_ONSALE",
+      "variant": "XL"
+    }
+  ],
+  "preview": {
+    "id": 5121576398,
+    "formats": {
+      "P0": {
+        "height": 1280,
+        "width": 1280,
+        "url": "https://media-photos.depop.com/b1/403036590/5121576398_df5095a34f5943e7aafae3d99ba79cf0/P0.jpg"
+      }
+    },
+    "original_width": 1280,
+    "original_height": 1280,
+    "is_square": true
+  },
+  "pricing": {
+    "currency": "USD",
+    "currency_name": "USD",
+    "current_price": {
+      "total_price": "15.00",
+      "price_breakdown": {
+        "price": {
+          "amount": "15.00"
+        },
+        "buyer_fee": {
+          "amount": "0.00"
+        },
+        "tax": {
+          "amount": "0.00",
+          "tax_type": "n/a"
+        },
+        "shipping": {
+          "amount": "5.99",
+          "shipping_boundary": "NATIONAL",
+          "shipping_id": "USPS"
+        }
+      }
+    },
+    "original_price": {
+      "total_price": "15.00",
+      "price_breakdown": {
+        "price": {
+          "amount": "15.00"
+        },
+        "buyer_fee": {
+          "amount": "0.00"
+        },
+        "tax": {
+          "amount": "0.00",
+          "tax_type": "n/a"
+        },
+        "shipping": {
+          "amount": "5.99",
+          "shipping_boundary": "NATIONAL",
+          "shipping_id": "USPS"
+        }
+      }
+    },
+    "total_price_components": {
+      "buyer_fee": false,
+      "shipping_price": false,
+      "tax": false
+    },
+    "display_price": {
+      "headline_price": {
+        "amount": "15.00",
+        "currency": "USD"
+      },
+      "headline_price_components": {
+        "buyer_fee": false,
+        "shipping_price": false,
+        "tax": false
+      }
+    },
+    "campaigns": {
+      "applied": []
+    },
+    "is_reduced": false,
+    "final_price_key": "original_price"
+  }
+}
