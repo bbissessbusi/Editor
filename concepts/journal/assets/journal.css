@@ -373,3 +373,12 @@ legend small { font-family: var(--body); font-size: 12px; letter-spacing: .14em;
 
 [hidden] { display: none !important; }
 .opener .wrap.spread { display: grid; }
+
+/* Found header: pastel pink, dark text, rust accents */
+.opener.ch-found, .ch-found .opener {
+  --pink: #f6c9d3;
+  background: var(--pink);
+  --ch-ink: var(--ink);
+  --ch-soft: var(--rust);
+}
+.opener.ch-found .btn.solid, .ch-found .opener .btn.solid { color: #fff6ef; }
