@@ -208,6 +208,7 @@ FOUND = f"""
           <button class="chip" data-filter="dresses" aria-pressed="false">Dresses</button>
           <button class="chip" data-filter="tops" aria-pressed="false">Tops</button>
           <button class="chip" data-filter="outerwear" aria-pressed="false">Outerwear</button>
+          <button class="chip" data-filter="bottoms" aria-pressed="false">Bottoms</button>
           <button class="chip" data-filter="accessories" aria-pressed="false">Accessories</button>
         </div>
       </div>

@@ -1,0 +1,16 @@
+{
+  "name": "margin-material-depop-sync",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pulls the Margin Material Depop shop into the website's inventory feed",
+  "type": "module",
+  "scripts": {
+    "postinstall": "playwright install chromium",
+    "sync": "node sync.mjs",
+    "sync:push": "node sync.mjs --push",
+    "bookmarklet": "node build-bookmarklet.mjs"
+  },
+  "dependencies": {
+    "playwright": "1.48.2"
+  }
+}

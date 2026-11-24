@@ -54,22 +54,41 @@ function pieceCard(p, i) {
     <a class="cover" href="${esc(url)}" target="_blank" rel="noopener" aria-label="${esc(p.name)} on Depop">
       <div class="photo" style="--tilt:${tilts[i % tilts.length]}">${media(p, p.name)}${stamp}</div>
     </a>
-    <div class="row"><span class="name">${esc(p.name)}</span><span class="price">$${p.price}</span></div>
-    <span class="meta">${esc(p.era)} · Size ${esc(p.size)}${p.note ? ` · <em>${esc(p.note)}</em>` : ""}</span>
+    <div class="row"><span class="name">${esc(p.name)}</span><span class="price">${p.price != null ? "$" + p.price : ""}</span></div>
+    <span class="meta">${[p.era, p.size && `Size ${p.size}`].filter(Boolean).map(esc).join(" · ")}${p.note ? ` · <em>${esc(p.note)}</em>` : ""}</span>
     ${action}
   </article>`;
 }
+// Live inventory: assets/depop-feed.json is written by tools/depop-sync (the
+// bookmark or the sync script). When it's there, it replaces the PIECES list.
+let INVENTORY = PIECES;
+const fromFeed = (it, i) => ({
+  name: it.title || "Vintage piece", price: it.price, cat: it.category || "other",
+  era: it.brand || "", size: it.size || "", sw: (i % 6) + 1, sold: !!it.sold,
+  note: "", image: it.image || "", depop: it.url || "",
+});
+const feedReady = fetch("assets/depop-feed.json", { cache: "no-cache" })
+  .then((r) => (r.ok ? r.json() : null))
+  .then((feed) => {
+    if (feed && Array.isArray(feed.items) && feed.items.length) {
+      INVENTORY = feed.items.map(fromFeed).sort((a, b) => a.sold - b.sold);
+    }
+  })
+  .catch(() => { /* no feed yet: keep PIECES */ });
+
 $$("[data-pieces]").forEach((grid) => {
-  const limit = Number(grid.dataset.pieces) || PIECES.length;
+  const limitAttr = Number(grid.dataset.pieces);
   const chips = $$(".chip");
   let filter = "all";
   const render = () => {
-    const list = PIECES.filter((p) => filter === "all" || p.cat === filter).slice(0, limit);
+    const limit = limitAttr || INVENTORY.length;
+    const list = INVENTORY.filter((p) => filter === "all" || p.cat === filter).slice(0, limit);
     grid.innerHTML = list.map(pieceCard).join("") || `<p class="muted">Nothing in this section right now. Check the Depop shop for the newest pieces.</p>`;
     chips.forEach((c) => c.setAttribute("aria-pressed", String(c.dataset.filter === filter)));
   };
   chips.forEach((c) => c.addEventListener("click", () => { filter = c.dataset.filter; render(); }));
   render();
+  feedReady.then(render);
 });
 $$("[data-depop-shop]").forEach((a) => (a.href = DEPOP_SHOP));
 
